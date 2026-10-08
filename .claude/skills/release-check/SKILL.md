@@ -1,6 +1,6 @@
 ---
 name: release-check
-description: Run before opening a PR. Runs both test suites and checks their counts against the baseline (Java 25, Jest 51).
+description: Run before opening a PR. Runs both test suites and checks their counts against the baseline (Java 42, Jest 51).
 ---
 
 # Release check
@@ -25,7 +25,7 @@ description: Run before opening a PR. Runs both test suites and checks their cou
 
 ## Constraints
 
-- Baseline: **Java 25**, **Jest 51** (the count after TODO-231).
+- Baseline: **Java 42**, **Jest 51** (Java after TODO-232, Jest after TODO-231).
 - A count BELOW the baseline is a **FAIL**, even if every test that ran passed.
   Fewer tests means something was deleted or skipped; find out what (e.g.
   `git diff --stat src/test`) and name it in Notes.
@@ -40,7 +40,7 @@ description: Run before opening a PR. Runs both test suites and checks their cou
 
 ```
 Release check
-  Java:  <n> run, <f> failures, <e> errors   (baseline 25)  PASS|FAIL
+  Java:  <n> run, <f> failures, <e> errors   (baseline 42)  PASS|FAIL
   Jest:  <n> passed, <t> total               (baseline 51)  PASS|FAIL
   Verdict: READY | NOT READY
   Notes: <"baseline held", or one line per problem>
