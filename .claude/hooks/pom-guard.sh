@@ -20,7 +20,9 @@ if [ -z "$file_path" ]; then
   file_path="$(printf '%s' "$input" | sed -n 's/.*"notebook_path"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -n 1)"
 fi
 
-case "$file_path" in
+# Compare lowercased: on Windows (and default macOS) the filesystem is
+# case-insensitive, so "POM.xml" is the same file as "pom.xml".
+case "$(printf '%s' "$file_path" | tr '[:upper:]' '[:lower:]')" in
   *pom.xml)
     echo "pom.xml dependencies are frozen. A change needs a CHG ticket." >&2
     exit 2
